@@ -14,7 +14,8 @@
     "lint": "yarn lint-ts && yarn prettier && yarn tsc",
     "lint-ts": "tslint --fix -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
     "prettier": "prettier --write ./**/*",
-    "tsc": "tsc --project ."
+    "tsc": "tsc --project .",
+    "tsc-watch": "tsc -w --project ."
   },
   "dependencies": {
     "date-fns": "^2.4.1",
