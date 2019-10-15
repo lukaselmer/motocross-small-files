@@ -18,7 +18,7 @@
     "noImplicitReturns": true,
     "module": "es6",
     "moduleResolution": "node",
-    "target": "es5",
+    "target": "es2015",
     "allowJs": true,
     "jsx": "react",
     // "rootDir": "./",                       /* Specify the root directory of input files. Use to control the output directory structure with --outDir. */
