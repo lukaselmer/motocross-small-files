@@ -17,10 +17,10 @@ export function Timeline(_props: any) {
         <VerticalTimelineElement
           key={`${entry.title}-${entry.date}`}
           className="vertical-timeline-element--work"
-          contentStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
-          contentArrowStyle={{ borderRight: '7px solid  rgb(33, 150, 243)' }}
+          contentStyle={{ background: '#2e7d32', color: '#fff' }}
+          contentArrowStyle={{ borderRight: '7px solid  #2e7d32' }}
           date={entry.date.toLocaleString()}
-          iconStyle={{ background: 'rgb(33, 150, 243)', color: '#fff' }}
+          iconStyle={{ background: '#2e7d32', color: '#fff' }}
           icon={<div>{entry.type}</div>}
         >
           <h3 className="vertical-timeline-element-title">{entry.title}</h3>
