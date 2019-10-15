@@ -8,7 +8,7 @@ export const timeline = timeline2019.map(entry => ({
   desc: entry.desc as string,
   date: parseISO(entry.date),
   link: 'link' in entry ? entry.link : '',
-  result: 'result' in entry ? parseResult(entry.result) : '',
+  result: 'result' in entry ? parseResult(entry.result) : null,
 }))
 
 function parseResult(result: string) {

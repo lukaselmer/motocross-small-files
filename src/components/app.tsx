@@ -3,6 +3,10 @@ import { Timeline } from './timeline'
 
 export class App extends React.Component<{}, {}> {
   render() {
-    return <div>Hello</div>;
+    return (
+      <div>
+        <Timeline />
+      </div>
+    )
   }
 }

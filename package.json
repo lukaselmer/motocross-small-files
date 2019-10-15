@@ -20,7 +20,8 @@
   "dependencies": {
     "date-fns": "^2.4.1",
     "react": "^16.10.0",
-    "react-dom": "^16.10.0"
+    "react-dom": "^16.10.0",
+    "react-vertical-timeline-component": "^2.5.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -28,11 +29,13 @@
     "@babel/preset-react": "^7.0.0",
     "@types/react": "^16.9.3",
     "@types/react-dom": "^16.9.1",
+    "@types/react-vertical-timeline-component": "^2.3.1",
     "firebase-tools": "^7.5.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2",
     "sass": "^1.23.0",
     "tslint": "^5.20.0",
+    "tslint-config-prettier": "^1.18.0",
     "tslint-react": "^4.1.0",
     "typescript": "^3.6.4"
   }
