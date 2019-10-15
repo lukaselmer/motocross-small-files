@@ -1,0 +1,8 @@
+.git
+dist
+**/*.min.js
+**/*.min.css
+node_modules
+package.json
+yarn.lock
+tsconfig.json
