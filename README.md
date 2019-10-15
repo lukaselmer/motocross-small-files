@@ -1,4 +1,6 @@
-# Motocross Small Files
+# ElmerMX Timeline
+
+https://elmermx-timeline.web.app
 
 ## Building and running on localhost
 
@@ -17,5 +19,11 @@ yarn start
 To create a production build:
 
 ```sh
-yarn run build-prod
+yarn build
+```
+
+To deploy:
+
+```sh
+yarn deploy
 ```
