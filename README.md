@@ -1,3 +1,5 @@
+[![CircleCI](https://circleci.com/gh/lukaselmer/motocross-small-files.svg?style=svg)](https://circleci.com/gh/lukaselmer/motocross-small-files)
+
 # ElmerMX Timeline
 
 https://elmermx-timeline.web.app
