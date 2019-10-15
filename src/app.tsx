@@ -6,6 +6,6 @@ interface P {
 
 export class App extends React.Component<P> {
   render() {
-    return <div>Hello, {this.props.name}</div>;
+    return <div>Hello, {this.props.name}!</div>;
   }
 }
