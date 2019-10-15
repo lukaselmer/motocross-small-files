@@ -1,2 +1,5 @@
+dist
 out
 index.js
+node_modules
+.cache

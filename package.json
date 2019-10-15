@@ -1,0 +1,30 @@
+{
+  "name": "motocross-small-files",
+  "version": "1.0.0",
+  "description": "Motocross Small Files",
+  "main": "src/index.ts",
+  "repository": "git@github.com:lukaselmer/motocross-small-files.git",
+  "author": "Lukas Elmer <lukas.elmer@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "clean": "rm dist/bundle.js",
+    "start": "parcel src/index.html",
+    "build-prod": "parcel build src/index.html"
+  },
+  "dependencies": {
+    "react": "^16.10.0",
+    "react-dom": "^16.10.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.6.2",
+    "@babel/preset-env": "^7.6.2",
+    "@babel/preset-react": "^7.0.0",
+    "@types/react": "^16.9.3",
+    "@types/react-dom": "^16.9.1",
+    "parcel-bundler": "^1.12.4",
+    "prettier": "^1.18.2",
+    "sass": "^1.23.0",
+    "tslint": "^5.20.0",
+    "typescript": "^3.6.4"
+  }
+}
