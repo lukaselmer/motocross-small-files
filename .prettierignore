@@ -12,3 +12,7 @@ tsconfig.json
 .gitignore
 .prettierignore
 .tools-version
+*.png
+*.gif
+*.jpg
+*.jpeg
