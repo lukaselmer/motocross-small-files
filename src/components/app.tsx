@@ -4,9 +4,9 @@ import { Timeline } from './timeline'
 export class App extends React.Component<{}, {}> {
   render() {
     return (
-      <div>
+      <main>
         <Timeline />
-      </div>
+      </main>
     )
   }
 }

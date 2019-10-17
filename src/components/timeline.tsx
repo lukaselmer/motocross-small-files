@@ -1,7 +1,8 @@
 import React from 'react'
-import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
-import 'react-vertical-timeline-component/style.min.css'
-import { timeline } from '../data/data'
+// import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
+// import 'react-vertical-timeline-component/style.min.css'
+import { timeline } from '../data/timeline-entries'
+import { TimelineElement } from './timeline-element'
 
 declare module 'react-vertical-timeline-component' {
   interface VerticalTimelineElementProps {
@@ -10,33 +11,36 @@ declare module 'react-vertical-timeline-component' {
   }
 }
 
-export function Timeline(_props: any) {
+export function Timeline() {
   return (
-    <VerticalTimeline>
+    <section
+      style={{
+        display: 'flex',
+        position: 'relative',
+        flexDirection: 'column',
+        background: 'rgb(227, 227, 227)',
+      }}
+    >
+      <div
+        style={{
+          zIndex: 1,
+          position: 'absolute',
+          top: 0,
+          left: '59.5px',
+          width: '6px',
+          height: '100%',
+          // marginTop: '98px',
+          // marginLeft: '-55px',
+          // borderRadius: '10px',
+          // margin: '10px 0 10px 0',
+          background: 'green',
+          // flexGrow: 0,
+          // flexShrink: 0,
+        }}
+      />
       {timeline.map(entry => (
-        <VerticalTimelineElement
-          key={`${entry.title}-${entry.date}`}
-          className="vertical-timeline-element--work"
-          contentStyle={{ background: '#2e7d32', color: '#fff' }}
-          contentArrowStyle={{ borderRight: '7px solid  #2e7d32' }}
-          date={entry.date.toLocaleString()}
-          iconStyle={{ background: '#2e7d32', color: '#fff' }}
-          icon={<div>{entry.type}</div>}
-        >
-          <h3 className="vertical-timeline-element-title">{entry.title}</h3>
-          <h4 className="vertical-timeline-element-subtitle">{entry.type}</h4>
-          <p>{entry.desc}</p>
-          {entry.result && (
-            <p>
-              1st moto: {entry.result.first}, 2nd moto: {entry.result.second}, Overall:{' '}
-              {entry.result.overall}
-            </p>
-          )}
-          <p>
-            <a href={entry.link}>Details</a>
-          </p>
-        </VerticalTimelineElement>
+        <TimelineElement key={`${entry.title}-${entry.date}`} entry={entry} />
       ))}
-    </VerticalTimeline>
+    </section>
   )
 }

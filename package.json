@@ -19,6 +19,11 @@
     "tsc-watch": "tsc -w --project ."
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^1.2.25",
+    "@fortawesome/free-brands-svg-icons": "^5.11.2",
+    "@fortawesome/free-regular-svg-icons": "^5.11.2",
+    "@fortawesome/free-solid-svg-icons": "^5.11.2",
+    "@fortawesome/react-fontawesome": "^0.1.6",
     "date-fns": "^2.4.1",
     "react": "^16.10.0",
     "react-dom": "^16.10.0",

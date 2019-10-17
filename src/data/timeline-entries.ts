@@ -1,6 +1,6 @@
 import { parseISO } from 'date-fns'
 import { Unpacked } from '../utils'
-import { timeline2019 } from './2019-timeline'
+import { timeline2019 } from './data-2019'
 
 export const timeline = timeline2019.map(entry => ({
   type: entry.type,

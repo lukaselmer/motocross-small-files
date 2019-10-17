@@ -7,3 +7,7 @@ export type Unpacked<T> = T extends (infer U)[]
   : T extends Set<infer U>
   ? U
   : never
+
+export function assertNever(obj: never): never {
+  throw new Error(`Unexpected value for object ${obj}`)
+}
