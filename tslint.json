@@ -127,7 +127,9 @@
     "ban-types": false,
     "no-object-literal-type-assertion": false,
     "no-require-imports": true,
-    "no-submodule-imports": false
+    "no-submodule-imports": false,
+    "jsx-no-lambda": false,
+    "jsx-no-bind": true
   },
   "rulesDirectory": []
 }

@@ -26,8 +26,7 @@
     "@fortawesome/react-fontawesome": "^0.1.6",
     "date-fns": "^2.4.1",
     "react": "^16.10.0",
-    "react-dom": "^16.10.0",
-    "react-vertical-timeline-component": "^2.5.0"
+    "react-dom": "^16.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.6.2",
@@ -40,6 +39,7 @@
     "firebase-tools": "^7.5.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2",
+    "react-visibility-sensor": "^5.1.1",
     "sass": "^1.23.0",
     "tslint": "^5.20.0",
     "tslint-config-prettier": "^1.18.0",

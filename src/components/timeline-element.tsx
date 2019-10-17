@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { useState } from 'react'
+import VisibilitySensor from 'react-visibility-sensor'
+import { color, leftTimelineColor } from '../data/colors'
 import { icon } from '../data/icons'
 import { TimelineEntry } from '../data/timeline-entries'
 
@@ -7,6 +9,8 @@ export interface P {
 }
 
 export function TimelineElement(props: P) {
+  const [visible, setVisible] = useState(false)
+
   const entry = props.entry
   return (
     <article
@@ -18,46 +22,67 @@ export function TimelineElement(props: P) {
         alignContent: 'center',
         // justifyContent: 'center',
         padding: '10px',
+        visibility: visible ? 'visible' : 'hidden',
       }}
     >
-      <section style={{ zIndex: 2, flexShrink: 0, flexGrow: 0, position: 'relative' }}>
+      <section
+        style={{
+          zIndex: 2,
+          flexShrink: 0,
+          flexGrow: 0,
+          position: 'relative',
+          animation: visible ? 'bounce-scale 0.6s' : '',
+        }}
+      >
         <div
           style={{
             display: 'flex',
             justifyContent: 'center',
             alignContent: 'center',
-            background: '#fff',
-            border: '5px solid green',
+            background: color(entry.type),
+            color: '#fff',
+            border: '5px solid transparent',
+            borderColor: leftTimelineColor,
             borderRadius: '50%',
             width: '95px',
             height: '95px',
           }}
         >
-          <div style={{ alignSelf: 'center' }}>{icon(entry.type)}</div>
+          <div style={{ alignSelf: 'center' }}>
+            <VisibilitySensor
+              partialVisibility={true}
+              offset={{ bottom: 40 }}
+              onChange={isVisible => isVisible && setVisible(true)}
+            >
+              {icon(entry.type)}
+            </VisibilitySensor>
+          </div>
         </div>
       </section>
       <section style={{ zIndex: 2, flexShrink: 0, flexGrow: 0, position: 'relative' }}>
         <div
           style={{
             display: 'flex',
-            borderWidth: '12px',
+            borderWidth: '15px',
             borderStyle: 'solid',
-            borderColor: 'transparent white transparent transparent',
-            borderImage: 'initial',
-            borderRightColor: 'green',
+            borderColor: 'transparent',
+            borderRightColor: color(entry.type),
             width: '0px',
             marginLeft: '5px',
             height: '0px',
+            marginRight: '-2px',
+            animation: visible ? 'bounce-left-to-right 0.6s' : '',
           }}
         />
       </section>
       <section
         style={{
-          background: '#2e7d32',
+          background: color(entry.type),
           color: '#fff',
           borderRadius: '10px',
           padding: '5px 20px',
           flexGrow: 1,
+          animation: visible ? 'bounce-left-to-right 0.6s' : '',
         }}
       >
         <h3 className="vertical-timeline-element-title">{entry.title}</h3>

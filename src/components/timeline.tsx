@@ -1,4 +1,5 @@
 import React from 'react'
+import { background, leftTimelineColor } from '../data/colors'
 // import { VerticalTimeline, VerticalTimelineElement } from 'react-vertical-timeline-component'
 // import 'react-vertical-timeline-component/style.min.css'
 import { timeline } from '../data/timeline-entries'
@@ -13,14 +14,7 @@ declare module 'react-vertical-timeline-component' {
 
 export function Timeline() {
   return (
-    <section
-      style={{
-        display: 'flex',
-        position: 'relative',
-        flexDirection: 'column',
-        background: 'rgb(227, 227, 227)',
-      }}
-    >
+    <section style={{ display: 'flex', position: 'relative', flexDirection: 'column', background }}>
       <div
         style={{
           zIndex: 1,
@@ -33,7 +27,7 @@ export function Timeline() {
           // marginLeft: '-55px',
           // borderRadius: '10px',
           // margin: '10px 0 10px 0',
-          background: 'green',
+          background: leftTimelineColor,
           // flexGrow: 0,
           // flexShrink: 0,
         }}
