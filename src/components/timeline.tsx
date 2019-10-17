@@ -23,13 +23,7 @@ export function Timeline() {
           left: '59.5px',
           width: '6px',
           height: '100%',
-          // marginTop: '98px',
-          // marginLeft: '-55px',
-          // borderRadius: '10px',
-          // margin: '10px 0 10px 0',
           background: leftTimelineColor,
-          // flexGrow: 0,
-          // flexShrink: 0,
         }}
       />
       {timeline.map(entry => (
