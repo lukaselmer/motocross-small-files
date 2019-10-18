@@ -9,6 +9,9 @@ export interface P {
   entry: TimelineEntry
 }
 
+const innerImageBorder = 5
+const outerImageBorder = 7
+
 export function TimelineElement(props: P) {
   const [visible, setVisible] = useState(false)
 
@@ -23,10 +26,10 @@ export function TimelineElement(props: P) {
         style={{
           display: 'flex',
           flexDirection: 'row',
-          alignItems: 'center',
-          // alignItems: 'stretch',
-          alignContent: 'center',
+          // alignItems: 'center',
           // justifyContent: 'center',
+          alignItems: 'stretch',
+          alignContent: 'center',
           padding: '10px',
           visibility: visible ? 'visible' : 'hidden',
         }}
@@ -69,6 +72,7 @@ export function TimelineElement(props: P) {
               marginLeft: '5px',
               height: '0px',
               marginRight: '-2px',
+              marginTop: '40px',
               animation: visible ? 'bounce-left-to-right 0.6s' : '',
             }}
           />
@@ -108,13 +112,13 @@ export function TimelineElement(props: P) {
               animation: visible ? 'bounce-left-to-right 0.6s' : '',
               flexBasis: 1,
               margin: '0 0 0 15px',
-              borderRadius: '10px',
-              border: '10px solid',
+              borderRadius: `${outerImageBorder}px`,
+              border: `${outerImageBorder}px solid`,
               borderColor: color(entry.type),
               background: color(entry.type),
             }}
           >
-            {entry.images.map((imageRow, rowIndex) => renderImageRow(imageRow, rowIndex))}
+            {entry.images.map((imageRow, rowIndex) => renderImageRow(entry.type, imageRow, rowIndex))}
           </section>
         )}
       </article>
@@ -122,14 +126,28 @@ export function TimelineElement(props: P) {
   )
 }
 
-function renderImageRow(imageRow: TimelineImage[], rowIndex: number) {
+function renderImageRow(type: TimelineEntryType, imageRow: TimelineImage[], rowIndex: number) {
   const imageWidths = calculateImageWidths(imageRow)
   return (
-    <div key={rowIndex} style={{ fontSize: 0, marginTop: rowIndex === 0 ? '' : '5px' }}>
+    <div
+      key={rowIndex}
+      style={{ fontSize: 0, marginTop: rowIndex === 0 ? '' : `${innerImageBorder}px` }}
+    >
       {zip(imageRow, imageWidths).map(([image, width]) => {
         if (!image || !width) throw new Error(`Image or with are not set ${image} ${image}`)
 
-        return <img key={image.url} src={image.url} style={{ width }} />
+        return (
+          <img
+            key={image.url}
+            src={image.url}
+            style={{
+              width,
+              marginLeft: `-${innerImageBorder}px`,
+              borderLeft: `${innerImageBorder}px solid`,
+              borderLeftColor: color(type),
+            }}
+          />
+        )
       })}
     </div>
   )
