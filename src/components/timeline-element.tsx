@@ -1,8 +1,9 @@
+import { zip } from 'lodash'
 import React, { useState } from 'react'
 import VisibilitySensor from 'react-visibility-sensor'
 import { color, leftTimelineColor } from '../data/colors'
 import { icon } from '../data/icons'
-import { TimelineEntry } from '../data/timeline-entries'
+import { TimelineEntry, TimelineEntryType, TimelineImage } from '../data/timeline-entries'
 
 export interface P {
   entry: TimelineEntry
@@ -102,23 +103,18 @@ export function TimelineElement(props: P) {
         </section>
         {entry.images.length > 0 && (
           <section
-            style={{ flexGrow: 1, animation: visible ? 'bounce-left-to-right 0.6s' : '', flexBasis: 1 }}
+            style={{
+              flexGrow: 1,
+              animation: visible ? 'bounce-left-to-right 0.6s' : '',
+              flexBasis: 1,
+              margin: '0 0 0 15px',
+              borderRadius: '10px',
+              border: '10px solid',
+              borderColor: color(entry.type),
+              background: color(entry.type),
+            }}
           >
-            {entry.images.map(image => {
-              return (
-                <img
-                  key={image}
-                  src={image}
-                  style={{
-                    maxWidth: imagesWidth(entry.images.length),
-                    borderRadius: '10px',
-                    background: color(entry.type),
-                    padding: '5px',
-                    margin: '5px',
-                  }}
-                />
-              )
-            })}
+            {entry.images.map((imageRow, rowIndex) => renderImageRow(imageRow, rowIndex))}
           </section>
         )}
       </article>
@@ -126,8 +122,34 @@ export function TimelineElement(props: P) {
   )
 }
 
+function renderImageRow(imageRow: TimelineImage[], rowIndex: number) {
+  const imageWidths = calculateImageWidths(imageRow)
+  return (
+    <div key={rowIndex} style={{ fontSize: 0, marginTop: rowIndex === 0 ? '' : '5px' }}>
+      {zip(imageRow, imageWidths).map(([image, width]) => {
+        if (!image || !width) throw new Error(`Image or with are not set ${image} ${image}`)
+
+        return <img key={image.url} src={image.url} style={{ width }} />
+      })}
+    </div>
+  )
+}
+
+function calculateImageWidths(imageRow: TimelineImage[]) {
+  const widthsAndHeights = imageRow.map(({ dimensions: { width, height } }) => [width, height])
+  const tooSmallWidths = widthsAndHeights.map(([width, height]) => width / height)
+  const totalWidth = sum(tooSmallWidths)
+  return tooSmallWidths
+    .map(width => width / totalWidth)
+    .map(width => width * 100)
+    .map(width => Math.floor(10000 * width) / 10000)
+    .map(width => `${width}%`)
+}
+
 function imagesWidth(imageCount: number) {
-  if (imageCount === 1) return '100%'
-  if (imageCount === 2) return '45%'
-  return '25%'
+  return `${Math.floor(100000 / imageCount) / 1000}%`
+}
+
+function sum(arr: number[]) {
+  return arr.reduce((sum, current) => sum + current, 0)
 }
