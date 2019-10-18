@@ -102,11 +102,7 @@ export function TimelineElement(props: P) {
         </section>
         {entry.images.length > 0 && (
           <section
-            style={{
-              flexGrow: 1,
-              animation: visible ? 'bounce-left-to-right 0.6s' : '',
-              flexBasis: 1,
-            }}
+            style={{ flexGrow: 1, animation: visible ? 'bounce-left-to-right 0.6s' : '', flexBasis: 1 }}
           >
             {entry.images.map(image => {
               return (
