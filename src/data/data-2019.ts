@@ -1,3 +1,5 @@
+// TODO: check https://sites.google.com/site/picasaresources/Home/Picasa-FAQ/google-photos-1/how-to/how-to-get-a-direct-link-to-an-image
+
 export const timeline2019 = [
   {
     date: '2018',
