@@ -5,17 +5,24 @@ import { timeline2019 } from './data-2019'
 
 const metaMap = new Map(imageMetadata.map(meta => [meta.url, meta]))
 
-export const timeline = Object.freeze(
-  timeline2019.map(entry => ({
-    type: entry.type,
-    title: entry.title as string,
-    desc: entry.desc as string,
-    date: parseISO(entry.date),
-    link: 'link' in entry ? entry.link : '',
-    result: 'result' in entry ? parseResult(entry.result) : null,
-    images: enhanceImages('images' in entry ? entry.images : []),
-  }))
-)
+export const timeline = loadTimeline()
+
+function loadTimeline() {
+  try {
+    return timeline2019.map(entry => ({
+      type: entry.type,
+      title: entry.title as string,
+      desc: entry.desc as string,
+      date: parseISO(entry.date),
+      link: 'link' in entry ? entry.link : '',
+      result: 'result' in entry ? parseResult(entry.result) : null,
+      images: enhanceImages('images' in entry ? entry.images : []),
+    }))
+  } catch (error) {
+    console.error('run `yarn download-images` before loading the timeline')
+    throw error
+  }
+}
 
 function parseResult(result: string) {
   const all = result.split('-').map(str => parseInt(str, 10))

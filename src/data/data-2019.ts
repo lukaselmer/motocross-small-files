@@ -29,6 +29,7 @@ export const timeline2019 = [
     desc:
       'I decided that I wanted to buy a new bike, and set my goals to *National MX 1 top 5* by the end of the season.',
     type: 'info',
+    images: [],
   },
   {
     date: '2019-02-21',
@@ -48,6 +49,7 @@ export const timeline2019 = [
     desc:
       "To achieve my goals, I stop eating unhealthy foods. While I didn't eat much unhealty food before, I focus on cooking with fresh ingredients, eat more fish and less fat, and avoid processed food in general. I also completely stop drinking alcohol, which also includes the glass of wine in the restaurant, or the occasional beers at social events or aperos. Orange & apple juice & still water are just as good, once you get used to it.",
     type: 'fitness',
+    images: [],
   },
   {
     date: '2019-03-10',
@@ -82,6 +84,7 @@ export const timeline2019 = [
     desc:
       'I start training my endurance off the bike by going jogging, swimming, and playing tennis, always with a heart rate between 130 and 140 (basic endurance). I feel the improvements on the bike almost instantly.',
     type: 'fitness',
+    images: [],
   },
   {
     date: '2019-03-24',
@@ -117,6 +120,7 @@ export const timeline2019 = [
     title: 'First hobby race in Wohlen',
     desc: "It doesn't fell very well - the suspension is still too hard, and I drop like a stone.",
     type: 'race',
+    images: [],
   },
   {
     date: '2019-04-09',
@@ -124,6 +128,7 @@ export const timeline2019 = [
     desc:
       "Simon Baumann from Moto Perfections recommends to make the suspension even softer. He does a full suspension service, and polishes the inner tubes of the front fork. When we go training the next day in Dorno, it's like a completely different bike to ride. I go from struggling after 5 minutes to comfortably racing for 15-20 minutes. Just in time for the first championship race!",
     type: 'technical',
+    images: [],
   },
   {
     date: '2019-04-13',
@@ -154,6 +159,7 @@ export const timeline2019 = [
     title: 'Motocross week in Italy',
     desc: 'Motivated by the podium in Wohlen, we go training for a whole week in Italy.',
     type: 'training',
+    images: [],
   },
   {
     date: '2019-04-29',
@@ -288,5 +294,6 @@ export const timeline2019 = [
     type: 'race',
     link:
       'https://speedhive.mylaps.com/Sessions/5356536?user=MYLAPS-GA-b076968929984e619c69c49f17d31205',
+    images: [],
   },
 ] as const
