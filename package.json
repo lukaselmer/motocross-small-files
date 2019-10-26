@@ -8,18 +8,27 @@
   "license": "MIT",
   "scripts": {
     "clean": "rm dist/bundle.js",
-    "start": "parcel src/index.html",
+    "start": "concurrently yarn:watch:parcel yarn:watch:tsc yarn:watch:prettier yarn:watch:tslint",
+    "watch:parcel": "parcel src/index.html",
+    "watch:tsc": "tsc -w --pretty --project .",
+    "watch:prettier": "onchange '**/*' --exclude-path .prettierignore -- npx prettier --write {{changed}}",
+    "watch:tslint": "onchange '**/*.ts' '**/*.tsx' -- yarn tslint",
     "build": "parcel build src/index.html",
     "download-images": "TS_NODE_COMPILER_OPTIONS=\"{\\\"module\\\":\\\"commonjs\\\"}\" ts-node src/data/download-images.ts",
     "deploy": "firebase deploy",
-    "lint": "yarn lint-ts && yarn prettier && yarn tsc",
-    "lint-parallel": "concurrently npm:lint-ts npm:prettier npm:tsc",
-    "collapse-ojects": "yarn eslint-raw && yarn prettier",
+    "pre-commit": "yarn collapse-objects && yarn lint-parallel",
+    "lint": "yarn tslint && yarn prettier && yarn tsc",
+    "lint-parallel": "concurrently yarn:tslint yarn:prettier yarn:tsc",
+    "collapse-objects": "yarn eslint-raw && yarn prettier",
     "eslint-raw": "eslint --ext .ts,.tsx --parser @typescript-eslint/parser --parser-options=ecmaVersion:2020,ecmaFeatures:{},sourceType:module --rule 'object-curly-newline: [2, never]' --no-eslintrc --fix ./src",
-    "lint-ts": "tslint --fix -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
+    "tslint": "tslint --fix -c tslint.json 'src/**/*.ts' 'src/**/*.tsx'",
     "prettier": "prettier --write '**/*'",
-    "tsc": "tsc --project .",
-    "tsc-watch": "tsc -w --project ."
+    "tsc": "tsc --project ."
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "yarn pre-commit"
+    }
   },
   "dependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.25",
@@ -45,7 +54,9 @@
     "concurrently": "^5.0.0",
     "eslint": "^6.5.1",
     "firebase-tools": "^7.6.1",
+    "husky": "^3.0.9",
     "image-size": "^0.8.3",
+    "onchange": "^6.1.0",
     "parcel-bundler": "^1.12.4",
     "prettier": "^1.18.2",
     "react-visibility-sensor": "^5.1.1",
