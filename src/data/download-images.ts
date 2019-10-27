@@ -4,7 +4,7 @@ import { imageSize } from 'image-size'
 import { promisify } from 'util'
 import { timeline2019 } from './data-2019'
 import { downloadFile } from './download-file'
-import { PromisePool } from './promise-pool'
+import { allSettled } from './promise-pool'
 
 const sizeOf = promisify(imageSize)
 const timelineImagesDir = 'src/images/timeline'
@@ -12,7 +12,7 @@ const timelineImagesDir = 'src/images/timeline'
 async function main() {
   await ensureImagesDirExists()
   const downloadImages = timelineImages().map(image => () => handleImage(image))
-  const metadata = await PromisePool.allSettled(downloadImages)
+  const metadata = await allSettled(downloadImages)
   await promises.writeFile(`${timelineImagesDir}/meta.json`, JSON.stringify(metadata, null, '  '))
 }
 
